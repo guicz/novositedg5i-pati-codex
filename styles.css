@@ -1426,15 +1426,47 @@ h4,
 }
 
 .journey-grid {
+  --journey-cycle: 9.6s;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
-  border-top: 1px solid var(--line-l);
+  padding-top: 1px;
+}
+
+.journey-grid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background:
+    linear-gradient(90deg, rgba(8, 7, 13, 0.1), var(--line-l), rgba(8, 7, 13, 0.1)),
+    linear-gradient(90deg, var(--signal), var(--accent));
+  background-repeat: no-repeat;
+  background-size: 100% 1px, 0% 1px;
+}
+
+.journey-grid::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.12), 0 0 34px rgba(155, 107, 255, 0.48);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .journey-grid article {
   position: relative;
-  padding: 34px 28px 0 0;
+  padding: 34px 28px 24px 0;
+  border-radius: 0 0 8px 8px;
+  transition: background 220ms var(--ease), transform 220ms var(--ease);
 }
 
 .journey-grid article::before {
@@ -1447,11 +1479,23 @@ h4,
   border: 1px solid var(--accent-dim);
   border-radius: 50%;
   background: var(--paper);
+  transition: border-color 220ms var(--ease), background 220ms var(--ease), box-shadow 220ms var(--ease), transform 220ms var(--ease);
 }
 
 .journey-grid article:last-child::before {
   border-color: var(--signal);
   background: var(--signal);
+}
+
+.journey-grid article:hover {
+  background: rgba(155, 107, 255, 0.045);
+  transform: translateY(-4px);
+}
+
+.journey-grid article:hover::before {
+  border-color: var(--signal);
+  background: var(--signal);
+  box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.1), 0 0 26px rgba(155, 107, 255, 0.35);
 }
 
 .journey-grid span {
@@ -1468,6 +1512,37 @@ h4,
 .team-grid p,
 .faq-list p {
   color: var(--t-on-light-2);
+}
+
+.has-motion .journey-grid.is-visible::before {
+  animation: journeyFill var(--journey-cycle) ease-in-out infinite;
+}
+
+.has-motion .journey-grid.is-visible::after {
+  animation: journeyMarker var(--journey-cycle) ease-in-out infinite;
+}
+
+.has-motion .journey-grid article.is-visible {
+  animation: journeyStage var(--journey-cycle) ease-in-out infinite;
+}
+
+.has-motion .journey-grid article.is-visible::before {
+  animation: journeyDot var(--journey-cycle) ease-in-out infinite;
+}
+
+.has-motion .journey-grid article:nth-child(2).is-visible,
+.has-motion .journey-grid article:nth-child(2).is-visible::before {
+  animation-delay: calc(var(--journey-cycle) * 0.25);
+}
+
+.has-motion .journey-grid article:nth-child(3).is-visible,
+.has-motion .journey-grid article:nth-child(3).is-visible::before {
+  animation-delay: calc(var(--journey-cycle) * 0.5);
+}
+
+.has-motion .journey-grid article:nth-child(4).is-visible,
+.has-motion .journey-grid article:nth-child(4).is-visible::before {
+  animation-delay: calc(var(--journey-cycle) * 0.75);
 }
 
 .sector-grid {
@@ -2015,6 +2090,68 @@ h4,
   }
 }
 
+@keyframes journeyFill {
+  0%,
+  8% {
+    background-size: 100% 1px, 0% 1px;
+  }
+
+  92%,
+  100% {
+    background-size: 100% 1px, 100% 1px;
+  }
+}
+
+@keyframes journeyMarker {
+  0%,
+  8% {
+    opacity: 1;
+    left: 0;
+  }
+
+  92% {
+    opacity: 1;
+    left: calc(100% - 11px);
+  }
+
+  100% {
+    opacity: 0;
+    left: calc(100% - 11px);
+  }
+}
+
+@keyframes journeyDot {
+  0%,
+  17% {
+    border-color: var(--signal);
+    background: var(--signal);
+    box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.1), 0 0 28px rgba(155, 107, 255, 0.38);
+    transform: scale(1.1);
+  }
+
+  32%,
+  100% {
+    border-color: var(--accent-dim);
+    background: var(--paper);
+    box-shadow: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes journeyStage {
+  0%,
+  17% {
+    background: rgba(155, 107, 255, 0.055);
+    transform: translateY(-4px);
+  }
+
+  32%,
+  100% {
+    background: transparent;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2116,6 +2253,16 @@ h4,
   .partner-strip,
   .article-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .journey-grid {
+    padding-top: 0;
+    border-top: 1px solid var(--line-l);
+  }
+
+  .journey-grid::before,
+  .journey-grid::after {
+    display: none;
   }
 
   .method-map {
