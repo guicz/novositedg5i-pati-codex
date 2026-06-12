@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DG5i Intelligence | Consultoria de Gestão e Educação em IA</title>
+    <meta
+      name="description"
+      content="Da estratégia à operação: IA aplicada para reduzir custos, acelerar decisões e treinar equipes."
+    />
+    <link rel="icon" href="assets/dg5i-short-light.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=32" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14" />
+        <path d="m13 6 6 6-6 6" />
+      </symbol>
+      <symbol id="icon-target" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+      </symbol>
+      <symbol id="icon-workflow" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="6" height="6" rx="1.5" />
+        <rect x="15" y="4" width="6" height="6" rx="1.5" />
+        <rect x="9" y="15" width="6" height="6" rx="1.5" />
+        <path d="M9 7h6M18 10v2a3 3 0 0 1-3 3h-3M6 10v2a3 3 0 0 0 3 3h3" />
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4 19V5" />
+        <path d="M4 19h16" />
+        <path d="m7 15 4-5 4 3 5-7" />
+        <path d="M7 19v-4M12 19v-7M17 19v-5" />
+      </symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M5 4h8a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4 4V4Z" />
+        <path d="M19 4h-6a4 4 0 0 0-4 4v12" />
+      </symbol>
+      <symbol id="icon-layers" viewBox="0 0 24 24">
+        <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+        <path d="m3 12 9 5 9-5" />
+        <path d="m3 16 9 5 9-5" />
+      </symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3" />
+        <circle cx="17" cy="9" r="2.5" />
+        <path d="M3 20a6 6 0 0 1 12 0" />
+        <path d="M14 18a5 5 0 0 1 7 2" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 20 6v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Z" />
+        <path d="m8.5 12 2.3 2.3 4.8-5" />
+      </symbol>
+      <symbol id="icon-store" viewBox="0 0 24 24">
+        <path d="M4 10h16l-1.2-5H5.2L4 10Z" />
+        <path d="M6 10v10h12V10" />
+        <path d="M9 20v-6h6v6" />
+      </symbol>
+      <symbol id="icon-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path d="M9 7V5h6v2M3 12h18" />
+      </symbol>
+      <symbol id="icon-factory" viewBox="0 0 24 24">
+        <path d="M3 21V9l6 4V9l6 4V7h6v14H3Z" />
+        <path d="M7 17h2M12 17h2M17 17h2" />
+      </symbol>
+      <symbol id="icon-graduation" viewBox="0 0 24 24">
+        <path d="m12 4 10 5-10 5L2 9l10-5Z" />
+        <path d="M6 11v5c2.5 2 9.5 2 12 0v-5" />
+      </symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.5 8.5c0 6-8.5 11-8.5 11s-8.5-5-8.5-11A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8.5 2.5Z" />
+      </symbol>
+      <symbol id="icon-map" viewBox="0 0 24 24">
+        <path d="M4 6v14l5-2 6 2 5-2V4l-5 2-6-2-5 2Z" />
+        <path d="M9 4v14M15 6v14" />
+      </symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24">
+        <path d="M12 2v7M12 15v7M2 12h7M15 12h7" />
+        <path d="m5 5 4 4M15 15l4 4M19 5l-4 4M9 15l-4 4" />
+      </symbol>
+    </svg>
+    <header class="site-header" aria-label="Navegação principal">
+      <a class="brand" href="#top" aria-label="DG5i Intelligence">
+        <img src="assets/dg5i-short-light.svg" alt="DG5i Intelligence" />
+      </a>
+      <nav class="main-nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#soluções">Soluções</a>
+        <a href="#método">Método</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#setores">Setores</a>
+        <a href="#ecossistema">Ecossistema</a>
+      </nav>
+      <a class="nav-cta" href="#contato">Fale conosco</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Introdução">
+        <img
+          src="assets/dg5i-hero-consultoria-ia.png"
+          alt="Executivos em sala estratégica com painéis de dados e inteligência artificial"
+          class="hero-image"
+        />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Consultoria de gestão + educação corporativa em IA</p>
+          <h1><span>IA aplicada</span> para reduzir custos, acelerar decisões e treinar equipes.</h1>
+          <p class="hero-copy">
+            A DG5i ajuda empresas a sair dos testes isolados e transformar inteligência artificial em capacidade real de gestão: processos mais eficientes, dados mais úteis, equipes mais preparadas e resultados mensuráveis.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contato">Agendar conversa estratégica <svg><use href="#icon-arrow"></use></svg></a>
+            <a class="button secondary" href="#método">Ver como trabalhamos <svg><use href="#icon-arrow"></use></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="resolved section-light" aria-label="O que a DG5i resolve">
+        <div class="resolved-layout">
+          <div class="resolved-copy">
+            <p class="eyebrow">O que a DG5i resolve?</p>
+            <h2>Transformamos inteligência artificial em capacidade de gestão.</h2>
+            <p>
+              A maioria das empresas já testou IA. Poucas conseguiram levar isso para processos, indicadores, governança, cultura e resultado. A DG5i entra exatamente nessa lacuna.
+            </p>
+          </div>
+          <div class="problem-grid" data-problem-accordion>
+            <article class="problem-item is-open">
+              <button class="problem-trigger" type="button" aria-expanded="true" aria-controls="problem-panel-1">
+                <span class="number">01</span>
+                <span class="problem-title">Custos e retrabalho</span>
+                <span class="card-icon"><svg><use href="#icon-workflow"></use></svg></span>
+                <span class="problem-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="problem-body" id="problem-panel-1">
+                <p>Mapeamos tarefas repetitivas, gargalos e fluxos manuais para implantar automações e agentes que liberam tempo dos times.</p>
+              </div>
+            </article>
+            <article class="problem-item">
+              <button class="problem-trigger" type="button" aria-expanded="false" aria-controls="problem-panel-2">
+                <span class="number">02</span>
+                <span class="problem-title">Decisões lentas</span>
+                <span class="card-icon"><svg><use href="#icon-chart"></use></svg></span>
+                <span class="problem-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="problem-body" id="problem-panel-2">
+                <p>Organizamos dados, indicadores e rotinas de análise para que líderes tomem decisões com mais clareza e menos dependência de planilhas dispersas.</p>
+              </div>
+            </article>
+            <article class="problem-item">
+              <button class="problem-trigger" type="button" aria-expanded="false" aria-controls="problem-panel-3">
+                <span class="number">03</span>
+                <span class="problem-title">Baixa maturidade em IA</span>
+                <span class="card-icon"><svg><use href="#icon-users"></use></svg></span>
+                <span class="problem-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="problem-body" id="problem-panel-3">
+                <p>Capacitamos líderes e equipes para usar IA com critério, segurança e foco em produtividade, sem depender apenas de entusiastas internos.</p>
+              </div>
+            </article>
+            <article class="problem-item">
+              <button class="problem-trigger" type="button" aria-expanded="false" aria-controls="problem-panel-4">
+                <span class="number">04</span>
+                <span class="problem-title">Projetos que não escalam</span>
+                <span class="card-icon"><svg><use href="#icon-layers"></use></svg></span>
+                <span class="problem-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="problem-body" id="problem-panel-4">
+                <p>Saindo do piloto, estruturamos roadmap, governança, indicadores e acompanhamento contínuo para capturar valor ao longo do tempo.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="market section-black" aria-label="Dados de mercado">
+        <div class="section-head">
+          <p class="eyebrow">IA e dados agora</p>
+          <h2>O mercado já decidiu. O desafio é transformar intenção em execução.</h2>
+        </div>
+        <div class="metric-grid">
+          <article>
+            <span class="metric-icon"><svg><use href="#icon-spark"></use></svg></span>
+            <strong>97%</strong>
+            <p>dos executivos dizem que a IA generativa transformará sua empresa e setor.</p>
+          </article>
+          <article>
+            <span class="metric-icon"><svg><use href="#icon-chart"></use></svg></span>
+            <strong>67%</strong>
+            <p>das organizações pretendem aumentar gastos em tecnologia com prioridade para dados e IA.</p>
+          </article>
+          <article>
+            <span class="metric-icon"><svg><use href="#icon-shield"></use></svg></span>
+            <strong>75%</strong>
+            <p>dos executivos apontam dados de boa qualidade como componente mais valioso para IA generativa.</p>
+          </article>
+          <article>
+            <span class="metric-icon"><svg><use href="#icon-layers"></use></svg></span>
+            <strong>9%</strong>
+            <p>das empresas implementaram totalmente um caso de uso de IA, segundo dados citados pela Accenture.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="about section-light" id="sobre" aria-label="Sobre a DG5i">
+        <div class="about-inner">
+          <div class="about-copy">
+            <p class="eyebrow">Sobre a DG5i Intelligence</p>
+            <h2>Consultoria, tecnologia e educação para transformar IA em rotina de gestão.</h2>
+            <p>
+              A DG5i atua com empresas que querem sair da curiosidade sobre inteligência artificial e chegar à aplicação prática: redução de custos, decisões mais rápidas, automação de processos e times preparados para usar IA com segurança.
+            </p>
+            <p>
+              Nosso diferencial é unir visão de negócio, construção de soluções e capacitação das equipes. A IA não entra como ferramenta isolada, mas como uma nova capacidade operacional.
+            </p>
+          </div>
+          <div class="about-visual">
+            <figure class="about-media">
+              <img class="about-photo" src="assets/dg5i-hero-consultoria-ia.png" alt="" decoding="async" />
+            </figure>
+            <div class="about-principles" aria-label="Pilares da DG5i">
+              <article>
+                <span class="card-icon"><svg><use href="#icon-target"></use></svg></span>
+                <h3>Gestão</h3>
+                <p>Priorizamos casos de uso por impacto, risco, viabilidade e retorno para o negócio.</p>
+              </article>
+              <article>
+                <span class="card-icon"><svg><use href="#icon-workflow"></use></svg></span>
+                <h3>Operação</h3>
+                <p>Construímos automações, agentes, dashboards e fluxos conectados à rotina real.</p>
+              </article>
+              <article>
+                <span class="card-icon"><svg><use href="#icon-book"></use></svg></span>
+                <h3>Educação</h3>
+                <p>Treinamos líderes e equipes para usar IA com autonomia, critério e responsabilidade.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients section-dark" id="clientes" aria-label="Empresas que confiam na DG5i">
+        <div class="section-head center">
+          <p class="eyebrow">Empresas que confiam na DG5i Intelligence</p>
+          <h2>Clientes já atendidos em projetos, educação e inteligência aplicada.</h2>
+        </div>
+        <div class="client-strip" aria-label="Logos de clientes">
+          <span class="client-logo sicredi"><img src="assets/clients/sicredi.svg" alt="Sicredi" /></span>
+          <span class="client-logo unicred"><img src="assets/clients/unicred.svg" alt="UNICRED" /></span>
+          <span class="client-logo todeschini"><img src="assets/clients/todeschini.svg" alt="Todeschini" /></span>
+          <span class="client-logo planalto"><img src="assets/clients/planalto.svg" alt="Planalto" /></span>
+          <span class="client-logo oralsin"><img src="assets/clients/oralbrasil.svg" alt="Oral Sin" /></span>
+          <span class="client-logo massey"><img src="assets/clients/massey.svg" alt="Massey Ferguson" /></span>
+          <span class="client-logo deere"><img src="assets/clients/johndeere.svg" alt="John Deere" /></span>
+          <span class="client-logo betsson"><img src="assets/clients/betsson.svg" alt="betsson" /></span>
+          <span class="client-logo jobim"><img src="assets/clients/jobim.svg" alt="Jobim" /></span>
+          <span class="client-logo fipe"><img src="assets/clients/fipe.svg" alt="fipe" /></span>
+          <span class="client-logo sicredi" aria-hidden="true"><img src="assets/clients/sicredi.svg" alt="" /></span>
+          <span class="client-logo unicred" aria-hidden="true"><img src="assets/clients/unicred.svg" alt="" /></span>
+          <span class="client-logo todeschini" aria-hidden="true"><img src="assets/clients/todeschini.svg" alt="" /></span>
+          <span class="client-logo planalto" aria-hidden="true"><img src="assets/clients/planalto.svg" alt="" /></span>
+          <span class="client-logo oralsin" aria-hidden="true"><img src="assets/clients/oralbrasil.svg" alt="" /></span>
+          <span class="client-logo massey" aria-hidden="true"><img src="assets/clients/massey.svg" alt="" /></span>
+          <span class="client-logo deere" aria-hidden="true"><img src="assets/clients/johndeere.svg" alt="" /></span>
+          <span class="client-logo betsson" aria-hidden="true"><img src="assets/clients/betsson.svg" alt="" /></span>
+          <span class="client-logo jobim" aria-hidden="true"><img src="assets/clients/jobim.svg" alt="" /></span>
+          <span class="client-logo fipe" aria-hidden="true"><img src="assets/clients/fipe.svg" alt="" /></span>
+        </div>
+      </section>
+
+      <section class="solutions section-light" id="soluções" aria-label="Soluções">
+        <div class="section-head">
+          <p class="eyebrow">Nossas soluções</p>
+          <h2>Trabalhamos com você para atender às suas prioridades de negócio.</h2>
+          <p>As frentes podem ser contratadas isoladamente ou combinadas em uma jornada de transformação, conforme maturidade, urgência e objetivo financeiro.</p>
+        </div>
+        <div class="solution-tabs" role="tablist" aria-label="Frentes de atuação">
+          <button class="tab active" data-tab="estratégia" type="button">Estratégia de IA</button>
+          <button class="tab" data-tab="operações" type="button">Operações inteligentes</button>
+          <button class="tab" data-tab="dados" type="button">Dados e decisão</button>
+          <button class="tab" data-tab="educação" type="button">Educação executiva</button>
+          <button class="tab" data-tab="office" type="button">AI Office</button>
+        </div>
+        <div class="solution-stage">
+          <article class="solution-panel active" id="estratégia">
+            <div>
+              <h3>Estratégia e governança de IA</h3>
+              <p class="lead">Para empresas que querem entender onde a IA gera valor antes de investir tempo, equipe e tecnologia.</p>
+              <h4>Ideal para:</h4>
+              <ul>
+                <li>Mapear oportunidades por área, processo e potencial de ROI.</li>
+                <li>Definir prioridades, riscos, governança e critérios de decisão.</li>
+                <li>Construir um roadmap prático para sair da intenção e chegar aos primeiros ganhos.</li>
+              </ul>
+            </div>
+            <aside>
+              <img src="assets/visual-strategy-operations.png" alt="Estratégia e indicadores executivos para projetos de IA" />
+              <span>Entregáveis</span>
+              <p>Mapa de oportunidades, matriz de priorização, plano de implantação, indicadores de sucesso e recomendações de governança.</p>
+            </aside>
+          </article>
+          <article class="solution-panel" id="operações">
+            <div>
+              <h3>Operações inteligentes</h3>
+              <p class="lead">Para reduzir retrabalho, acelerar fluxos e criar agentes de IA conectados a rotinas reais do negócio.</p>
+              <h4>Aplicações comuns:</h4>
+              <ul>
+                <li>Automação de atendimento, documentos, propostas, relatórios e backoffice.</li>
+                <li>Agentes para apoio a vendas, suporte, gestão do conhecimento e análise operacional.</li>
+                <li>Integrações com ferramentas já usadas pela empresa.</li>
+              </ul>
+            </div>
+            <aside>
+              <img src="assets/visual-ai-operating-model.png" alt="Fluxos de dados e automação para operações inteligentes" />
+              <span>Resultado esperado</span>
+              <p>Menos tempo em tarefas repetitivas, mais padronização, maior velocidade de resposta e ganhos mensuráveis de produtividade.</p>
+            </aside>
+          </article>
+          <article class="solution-panel" id="dados">
+            <div>
+              <h3>Dados e inteligência de decisão</h3>
+              <p class="lead">Para transformar informações dispersas em indicadores, painéis, previsões e rituais de decisão.</p>
+              <h4>Ideal para:</h4>
+              <ul>
+                <li>Organizar bases, indicadores e dashboards executivos.</li>
+                <li>Criar modelos de previsão, segmentação e recomendação.</li>
+                <li>Apoiar decisões comerciais, financeiras, operacionais e de gestão.</li>
+              </ul>
+            </div>
+            <aside>
+              <img src="assets/visual-ai-operating-model.png" alt="Arquitetura visual de dados para decisão executiva" />
+              <span>Foco</span>
+              <p>Dados confiáveis, leitura executiva simples e inteligência aplicada a decisões que impactam receita, custo e risco.</p>
+            </aside>
+          </article>
+          <article class="solution-panel" id="educação">
+            <div>
+              <h3>Educação executiva e cultura de IA</h3>
+              <p class="lead">Para preparar líderes e equipes para usar IA com critério, segurança e orientação a resultado.</p>
+              <h4>Formatos:</h4>
+              <ul>
+                <li>Workshops para diretoria e lideranças.</li>
+                <li>Treinamentos por área: comercial, marketing, RH, jurídico, financeiro e operações.</li>
+                <li>Trilhas práticas com casos de uso da própria empresa.</li>
+              </ul>
+            </div>
+            <aside>
+              <img src="assets/visual-ai-education.png" alt="Educação executiva e capacitação corporativa em IA" />
+              <span>Diferencial</span>
+              <p>A educação não é genérica: conectamos conceitos de IA a processos, decisões e metas reais da empresa.</p>
+            </aside>
+          </article>
+          <article class="solution-panel" id="office">
+            <div>
+              <h3>AI Office as a Service</h3>
+              <p class="lead">Para empresas que querem acompanhamento contínuo sem criar imediatamente uma área interna completa.</p>
+              <h4>Inclui:</h4>
+              <ul>
+                <li>Gestão do portfólio de iniciativas de IA.</li>
+                <li>Acompanhamento de indicadores, riscos e evolução de maturidade.</li>
+                <li>Rituais de melhoria contínua com lideranças e times operacionais.</li>
+              </ul>
+            </div>
+            <aside>
+              <img src="assets/visual-ai-operating-model.png" alt="Modelo operacional de IA para escalar iniciativas" />
+              <span>Quando faz sentido</span>
+              <p>Quando a empresa já entendeu que IA não é um projeto pontual, mas uma capacidade permanente de gestão.</p>
+            </aside>
+          </article>
+        </div>
+      </section>
+
+      <section class="method section-dark" id="método" aria-label="Método DG5i">
+        <div class="section-head">
+          <p class="eyebrow">Método DG5i</p>
+          <h2>Uma jornada direta para sair do diagnóstico e chegar ao resultado.</h2>
+          <p>Nosso método combina visão de gestão, tecnologia aplicada e educação para garantir que a IA não fique restrita a pilotos desconectados.</p>
+        </div>
+        <div class="method-map">
+          <article>
+            <span class="method-icon"><svg><use href="#icon-target"></use></svg></span>
+            <span>01</span>
+            <h3>Diagnosticar</h3>
+            <p>Entendemos prioridades, processos, dados, dores e maturidade das equipes.</p>
+          </article>
+          <article>
+            <span class="method-icon"><svg><use href="#icon-map"></use></svg></span>
+            <span>02</span>
+            <h3>Priorizar</h3>
+            <p>Selecionamos casos de uso por impacto, viabilidade, risco e velocidade de retorno.</p>
+          </article>
+          <article>
+            <span class="method-icon"><svg><use href="#icon-workflow"></use></svg></span>
+            <span>03</span>
+            <h3>Construir</h3>
+            <p>Desenhamos e implementamos automações, agentes, dashboards e modelos aplicados.</p>
+          </article>
+          <article>
+            <span class="method-icon"><svg><use href="#icon-book"></use></svg></span>
+            <span>04</span>
+            <h3>Capacitar</h3>
+            <p>Preparamos líderes e usuários para adotar IA com segurança e autonomia.</p>
+          </article>
+          <article>
+            <span class="method-icon"><svg><use href="#icon-layers"></use></svg></span>
+            <span>05</span>
+            <h3>Escalar</h3>
+            <p>Acompanhamos indicadores, governança e novas ondas de oportunidades.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="visual-band" aria-hidden="true"></section>
+
+      <section class="journey section-light" id="jornada" aria-label="Jornada de acompanhamento">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Jornada de acompanhamento</p>
+            <h2>Do primeiro mapa ao ganho recorrente.</h2>
+          </div>
+          <p>Para clientes inseguros, a jornada mostra claramente o que acontece em cada fase e reduz a sensação de risco.</p>
+        </div>
+        <div class="journey-grid">
+          <article>
+            <span class="card-icon"><svg><use href="#icon-map"></use></svg></span>
+            <span>Semanas 1-2</span>
+            <h3>Mapa de oportunidades</h3>
+            <p>Entrevistas, leitura de processos, maturidade de dados e lista priorizada de casos de uso.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-spark"></use></svg></span>
+            <span>Semanas 3-6</span>
+            <h3>Protótipo orientado a valor</h3>
+            <p>Desenho da solução, validação com usuários e primeiro piloto com indicadores definidos.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-users"></use></svg></span>
+            <span>Meses 2-4</span>
+            <h3>Implantação e educação</h3>
+            <p>Integração com a rotina, treinamento de usuários e ajustes para uso real.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-layers"></use></svg></span>
+            <span>Contínuo</span>
+            <h3>AI Office</h3>
+            <p>Governança, melhoria contínua, expansão de casos e acompanhamento de resultados.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sectors section-light" id="setores" aria-label="Aplicação por setor">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Aplicação por setor</p>
+            <h2>A IA ganha valor quando conversa com o contexto do negócio.</h2>
+          </div>
+          <p>Adaptamos a abordagem para prioridades, dados, riscos e rotinas de cada segmento.</p>
+        </div>
+        <div class="sector-grid">
+          <article>
+            <span class="card-icon"><svg><use href="#icon-store"></use></svg></span>
+            <h3>Varejo e consumo</h3>
+            <p>Previsão de demanda, atendimento inteligente, análise de comportamento, campanhas, precificação e eficiência de estoque.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-briefcase"></use></svg></span>
+            <h3>Serviços profissionais</h3>
+            <p>Automação de documentos, propostas, pesquisas, atendimento, gestão do conhecimento e suporte a decisões comerciais.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-factory"></use></svg></span>
+            <h3>Indústria e operações</h3>
+            <p>Análise de produtividade, manutenção preditiva, planejamento, qualidade, segurança e redução de desperdícios.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-graduation"></use></svg></span>
+            <h3>Educação e treinamento</h3>
+            <p>Trilhas personalizadas, tutores de IA, conteúdo adaptativo, análise de aprendizagem e capacitação de professores e equipes.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-chart"></use></svg></span>
+            <h3>Financeiro e gestão</h3>
+            <p>Dashboards, consolidação de dados, análise de crédito, previsão de caixa, auditoria de processos e inteligência gerencial.</p>
+          </article>
+          <article>
+            <span class="card-icon"><svg><use href="#icon-heart"></use></svg></span>
+            <h3>Saúde e bem-estar</h3>
+            <p>Fluxos administrativos, análise de agenda, atendimento, educação do paciente e apoio à gestão de indicadores.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="partners section-dark" id="ecossistema" aria-label="Parceiros e plataformas">
+        <div class="section-head center">
+          <p class="eyebrow">Ecossistema de tecnologia</p>
+          <h2>Principais plataformas para educação, dados, automação e IA aplicada.</h2>
+          <p>Usamos o ecossistema de ferramentas conforme o desafio do cliente, sem prender a solução a uma tecnologia única.</p>
+        </div>
+        <div class="partner-strip" aria-label="Marcas de referência">
+          <span class="platform-logo openai"><img src="assets/platforms/openai.svg" alt="" aria-hidden="true" />OpenAI</span>
+          <span class="platform-logo microsoft"><img src="assets/platforms/microsoft.svg" alt="" aria-hidden="true" />Microsoft</span>
+          <span class="platform-logo google"><img src="assets/platforms/googlecloud.svg" alt="" aria-hidden="true" />Google Cloud</span>
+          <span class="platform-logo aws"><img src="assets/platforms/aws.svg" alt="" aria-hidden="true" />AWS</span>
+          <span class="platform-logo databricks"><img src="assets/platforms/databricks.svg" alt="" aria-hidden="true" />Databricks</span>
+          <span class="platform-logo snowflake"><img src="assets/platforms/snowflake.svg" alt="" aria-hidden="true" />Snowflake</span>
+          <span class="platform-logo make"><img src="assets/platforms/make.svg" alt="" aria-hidden="true" />Make</span>
+          <span class="platform-logo n8n"><img src="assets/platforms/n8n.svg" alt="" aria-hidden="true" />n8n</span>
+        </div>
+      </section>
+
+      <section class="team section-dark" id="time" aria-label="Time DG5i">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Conheça nosso time</p>
+            <h2>Consultores que conectam estratégia, educação e implementação.</h2>
+          </div>
+          <p>Uma equipe que combina visão de negócio, tecnologia aplicada, gestão de projetos e inteligência artificial orientada a resultado.</p>
+        </div>
+        <div class="team-grid">
+          <article>
+            <img class="team-photo" src="assets/team/alessandro-mathias.jpeg" alt="Alessandro Mathias" />
+            <h3>Alessandro Mathias</h3>
+            <h4>Estratégia e IA aplicada</h4>
+            <p>Profissional com mais de 20 anos de mercado, atua conectando gestão, inovação e vendas a processos que impulsionam o crescimento de negócios. É formado em Gestão de Empresas pela FGV e conselheiro de empresas pela Fundação Dom Cabral. Tem forte capacidade de transformar dados em modelos de análise e estruturas de decisão, acelerando diagnósticos, priorização e execução, com impacto direto em eficiência, redução de custos e aumento de lucratividade.</p>
+            <div class="team-tags">
+              <span>#Estratégia</span>
+              <span>#ROI</span>
+              <span>#Visão</span>
+            </div>
+          </article>
+          <article>
+            <img class="team-photo" src="assets/team/guilherme-silveira.png" alt="Guilherme Silveira" />
+            <h3>Guilherme Silveira</h3>
+            <h4>Empreendedor e especialista em IA corporativa</h4>
+            <p>Empreendedor com mais de dez anos atuando no mercado da tecnologia, comunicação e inovação, Guilherme trabalha com Inteligência Artificial desde os primeiros movimentos do tema no Brasil, com foco em aplicações práticas orientadas a resultado. Sua especialidade é transformar problemas complexos em métricas, dados e modelos de decisão que direcionam estratégia, priorizam investimentos e aceleram resultados, tendo participado de projetos para organizações como Sicredi, John Deere e Sebrae.</p>
+            <div class="team-tags">
+              <span>#Tech</span>
+              <span>#Produto</span>
+              <span>#Liderança</span>
+            </div>
+          </article>
+          <article>
+            <img class="team-photo" src="assets/team/patricia.png" alt="Patrícia" />
+            <h3>Patrícia</h3>
+            <h4>Gestão de projetos e IA aplicada</h4>
+            <p>Profissional com formação em Sistemas para Internet pela UFSM e especialização em Inteligência Artificial, atua na gestão e no planejamento de projetos que conectam tecnologia a resultado. Conduz iniciativas de IA do diagnóstico à entrega, estruturando escopo, prioridades, cronograma e métricas para garantir eficiência e impacto. Também desenvolve soluções com IA e apoia empresas na implementação prática, alinhando pessoas, processos e objetivos estratégicos para acelerar produtividade, reduzir retrabalho e melhorar a tomada de decisão.</p>
+            <div class="team-tags">
+              <span>#Gestão</span>
+              <span>#Sistemas</span>
+              <span>#Processos</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="updates section-light" id="conteúdo" aria-label="Últimas atualizações">
+        <div class="section-head">
+          <p class="eyebrow">Conteúdo que educa o mercado</p>
+          <h2>Insights para líderes que querem aplicar IA com clareza.</h2>
+          <p>Esta área funciona como hub editorial: ajuda decisores a entenderem onde a IA gera valor, quais riscos precisam ser tratados e como preparar equipes para adotar a tecnologia com segurança.</p>
+        </div>
+        <div class="article-grid">
+          <article class="feature-article">
+            <img src="assets/visual-strategy-operations.png" alt="Mesa executiva com dados, indicadores e estratégia de IA" />
+            <span>Artigo</span>
+            <h3>Nem toda IA é igual: quando comprar pronto ou construir sob medida</h3>
+            <p>Um guia para separar soluções simples dos desafios que exigem estratégia, dados, integração e governança.</p>
+          </article>
+          <article>
+            <img src="assets/visual-ai-operating-model.png" alt="Arquitetura visual de dados e fluxos de inteligência artificial" />
+            <span>Guia executivo</span>
+            <h3>Como priorizar projetos de IA pelo impacto real no negócio</h3>
+            <p>Uma matriz para avaliar ganho, complexidade, risco, dados disponíveis e velocidade de implantação.</p>
+          </article>
+          <article>
+            <img src="assets/visual-ai-education.png" alt="Lideranças em treinamento corporativo sobre inteligência artificial" />
+            <span>Educação</span>
+            <h3>O que todo líder precisa saber antes de cobrar IA do time</h3>
+            <p>Conceitos, limites e perguntas práticas para transformar curiosidade em decisão de gestão.</p>
+          </article>
+          <article>
+            <img src="assets/dg5i-hero-consultoria-ia.png" alt="Consultores em sala de decisão com painéis de IA e dados" />
+            <span>Brief</span>
+            <h3>IA generativa na operação: onde estão os ganhos mais rápidos</h3>
+            <p>Atendimento, vendas, documentos, análise de dados, backoffice e gestão do conhecimento.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq section-light" id="faq" aria-label="Perguntas frequentes">
+        <div class="section-head">
+          <p class="eyebrow">Tira-dúvidas</p>
+          <h2>Você tem dúvidas? Nós temos respostas.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Minha empresa precisa ter dados organizados para começar?</summary>
+            <p>Não necessariamente. Em muitos casos, o primeiro passo é justamente entender quais dados existem, onde estão as lacunas e quais processos podem gerar valor mesmo antes de uma grande estrutura de dados.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva para ver os primeiros resultados?</summary>
+            <p>Depende da complexidade, mas uma primeira leitura de oportunidades pode acontecer em poucas semanas. Pilotos simples podem evoluir rapidamente; iniciativas integradas exigem mais desenho, governança e acompanhamento.</p>
+          </details>
+          <details>
+            <summary>A DG5i apenas recomenda ou também implementa?</summary>
+            <p>Fazemos os dois. Atuamos da estratégia à operação: diagnóstico, priorização, desenho, implementação, capacitação e acompanhamento dos indicadores.</p>
+          </details>
+          <details>
+            <summary>Como evitamos projetos de IA sem retorno?</summary>
+            <p>Priorizamos casos de uso por impacto financeiro, viabilidade técnica, disponibilidade de dados, risco e velocidade de adoção. A ideia não é fazer IA por moda, mas por valor de negócio.</p>
+          </details>
+          <details>
+            <summary>O trabalho inclui treinamento das equipes?</summary>
+            <p>Sim. A educação é parte central da proposta, porque IA só gera resultado quando as pessoas entendem como usar, quando confiar, quando revisar e como transformar a tecnologia em rotina.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="contact section-black" id="contato" aria-label="Contato">
+        <div class="contact-inner">
+          <p class="eyebrow">Próximo passo</p>
+          <h2>Vamos identificar onde a IA pode gerar valor real na sua empresa?</h2>
+          <p>Converse com a DG5i para mapear oportunidades, riscos e prioridades de implantação.</p>
+          <form class="contact-form">
+            <label>
+              Nome
+              <input type="text" name="nome" placeholder="Seu nome" />
+            </label>
+            <label>
+              Empresa
+              <input type="text" name="empresa" placeholder="Nome da empresa" />
+            </label>
+            <label>
+              E-mail ou WhatsApp
+              <input type="text" name="contato" placeholder="Como podemos falar com você?" />
+            </label>
+            <label>
+              Principal prioridade
+              <select name="prioridade">
+                <option>Reduzir custos</option>
+                <option>Acelerar decisões</option>
+                <option>Capacitar equipes</option>
+                <option>Automatizar processos</option>
+                <option>Definir estratégia de IA</option>
+              </select>
+            </label>
+            <button class="button primary" type="button">Solicitar conversa</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>DG5i Intelligence</p>
+      <p>Consultoria de gestão e educação em IA.</p>
+    </footer>
+
+    <script>
+      document.documentElement.classList.add("has-motion");
+
+      const siteHeader = document.querySelector(".site-header");
+      const syncHeader = () => {
+        siteHeader.classList.toggle("is-scrolled", window.scrollY > 40);
+      };
+      syncHeader();
+      window.addEventListener("scroll", syncHeader, { passive: true });
+
+      const tabs = document.querySelectorAll(".tab");
+      const panels = document.querySelectorAll(".solution-panel");
+
+      tabs.forEach((tab) => {
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-selected", tab.classList.contains("active") ? "true" : "false");
+      });
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((item) => item.classList.remove("active"));
+          panels.forEach((panel) => panel.classList.remove("active"));
+          tab.classList.add("active");
+          tabs.forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      const problemAccordion = document.querySelector("[data-problem-accordion]");
+      if (problemAccordion) {
+        const problemItems = problemAccordion.querySelectorAll(".problem-item");
+        const problemTriggers = problemAccordion.querySelectorAll(".problem-trigger");
+
+        const openProblem = (selectedItem) => {
+          problemItems.forEach((item) => {
+            const isSelected = item === selectedItem;
+            item.classList.toggle("is-open", isSelected);
+            item.querySelector(".problem-trigger")?.setAttribute("aria-expanded", isSelected ? "true" : "false");
+          });
+        };
+
+        problemTriggers.forEach((trigger) => {
+          trigger.addEventListener("click", () => {
+            const item = trigger.closest(".problem-item");
+            if (item) openProblem(item);
+          });
+        });
+      }
+
+      const animatedItems = document.querySelectorAll(
+        ".section-head, .hero-content, .article-grid article, .problem-grid article, .metric-grid article, .about-principles article, .about-photo, .solution-stage, .sector-grid article, .method-map article, .journey-grid article, .platform-logo, .team-grid article, .faq-list details, .contact-form"
+      );
+
+      animatedItems.forEach((item, index) => {
+        item.classList.add("reveal");
+        item.style.setProperty("--delay", `${Math.min(index % 6, 5) * 45}ms`);
+      });
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        animatedItems.forEach((item) => observer.observe(item));
+      } else {
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+      }
+
+      const metricNumbers = document.querySelectorAll(".metric-grid strong");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const animateMetric = (metric) => {
+        if (metric.dataset.counted === "true") return;
+        metric.dataset.counted = "true";
+
+        const metricCard = metric.closest("article");
+        const finalText = metric.textContent.trim();
+        const finalValue = Number.parseInt(finalText, 10);
+
+        if (!Number.isFinite(finalValue) || prefersReducedMotion) {
+          metric.textContent = finalText;
+          metricCard?.classList.add("metric-ready");
+          return;
+        }
+
+        const duration = 1050;
+        const start = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          metric.textContent = `${Math.round(finalValue * eased)}%`;
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            metric.textContent = finalText;
+            metricCard?.classList.add("metric-ready");
+          }
+        };
+
+        metric.textContent = "0%";
+        requestAnimationFrame(tick);
+      };
+
+      if ("IntersectionObserver" in window) {
+        const metricObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const metric = entry.target.querySelector("strong");
+                if (metric) animateMetric(metric);
+                metricObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.42 }
+        );
+
+        document.querySelectorAll(".metric-grid article").forEach((item) => metricObserver.observe(item));
+      } else {
+        metricNumbers.forEach(animateMetric);
+      }
+
+    </script>
+  </body>
+</html>

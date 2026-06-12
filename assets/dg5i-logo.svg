@@ -1,0 +1,10 @@
+<svg width="260" height="48" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DG5i Intelligence</title>
+  <desc id="desc">Logo DG5i Intelligence em branco com acento violeta</desc>
+  <rect x="1" y="1" width="46" height="46" rx="8" stroke="#8A16FF" stroke-width="2"/>
+  <text x="8" y="31" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="-1">DG5</text>
+  <text x="36" y="31" fill="#B764FF" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="-1">i</text>
+  <circle cx="36.5" cy="18" r="2" fill="#B764FF"/>
+  <text x="60" y="31" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="900" letter-spacing="-0.8">DG5i</text>
+  <text x="122" y="31" fill="#CFC9DB" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="-0.2">Intelligence</text>
+</svg>
