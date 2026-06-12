@@ -1315,19 +1315,6 @@ h4,
   border: 0;
 }
 
-.method-map::before {
-  content: "";
-  position: absolute;
-  left: 3%;
-  right: 3%;
-  top: 58px;
-  height: 90px;
-  border-top: 1px solid rgba(233, 197, 72, 0.82);
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  opacity: 0.82;
-  pointer-events: none;
-}
-
 .method-map::after {
   content: "";
   position: absolute;
@@ -1361,48 +1348,24 @@ h4,
   transform: translateY(42px);
 }
 
-.method-map article::before {
-  content: "";
-  position: absolute;
-  left: 24px;
-  top: 28px;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--signal);
-  border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.06);
-  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), background 260ms var(--ease);
-}
-
-.method-map article.is-visible::before,
-.method-map article:hover::before {
-  transform: scale(1.18);
-  background: var(--signal);
-  box-shadow: 0 0 0 12px rgba(233, 197, 72, 0.08), 0 0 30px rgba(233, 197, 72, 0.34);
-}
-
 .method-icon {
   position: absolute;
   right: 22px;
   top: 24px;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(155, 107, 255, 0.34);
-  border-radius: 50%;
+  display: block;
+  width: 24px;
+  height: 24px;
   color: var(--accent-hot);
-  background: rgba(244, 242, 250, 0.04);
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease), background 260ms var(--ease);
+  opacity: 0.9;
+  transition: transform 260ms var(--ease), color 260ms var(--ease), opacity 260ms var(--ease);
 }
 
 .method-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
 }
 
-.method-map span {
+.method-map article > span:not(.method-icon) {
   display: block;
   margin-bottom: 56px;
 }
@@ -1428,9 +1391,9 @@ h4,
 }
 
 .method-map article:hover .method-icon {
-  border-color: var(--accent-hot);
-  background: rgba(155, 107, 255, 0.12);
-  transform: rotate(-8deg) scale(1.06);
+  color: var(--signal);
+  opacity: 1;
+  transform: translateY(-3px);
 }
 
 .visual-band {
@@ -2160,7 +2123,6 @@ h4,
     padding-top: 56px;
   }
 
-  .method-map::before,
   .method-map::after {
     display: none;
   }
@@ -2296,7 +2258,7 @@ h4,
     padding: 78px 24px 28px;
   }
 
-  .method-map span {
+  .method-map article > span:not(.method-icon) {
     margin-bottom: 28px;
   }
 
