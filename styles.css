@@ -1425,86 +1425,161 @@ h4,
   background: linear-gradient(90deg, transparent, rgba(233, 197, 72, 0.74), transparent);
 }
 
-.journey-grid {
-  --journey-cycle: 9.6s;
+.journey {
   position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(109, 69, 201, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
+    linear-gradient(180deg, rgba(8, 7, 13, 0.035), transparent 28%),
+    var(--paper);
+}
+
+.journey::before {
+  content: "";
+  position: absolute;
+  inset: 72px 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(109, 69, 201, 0.26), transparent);
+}
+
+.journey .section-head {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 34px;
+}
+
+.journey .section-head h2 {
+  max-width: 760px;
+}
+
+.journey-grid {
+  --journey-cycle: 8s;
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  padding-top: 1px;
+  gap: 16px;
+  padding: 68px 22px 22px;
+  overflow: hidden;
+  border: 1px solid rgba(244, 242, 250, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(244, 242, 250, 0.05) 1px, transparent 1px) 0 0 / 86px 100%,
+    radial-gradient(ellipse at 18% 0%, rgba(233, 197, 72, 0.16), transparent 32%),
+    linear-gradient(135deg, #08070d, #15121f 54%, #0a0810);
+  color: var(--t-on-dark);
+  box-shadow: 0 38px 120px rgba(8, 7, 13, 0.22);
 }
 
 .journey-grid::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
+  left: 22px;
+  right: 22px;
+  top: 34px;
+  height: 6px;
+  border-radius: 999px;
   background:
-    linear-gradient(90deg, rgba(8, 7, 13, 0.1), var(--line-l), rgba(8, 7, 13, 0.1)),
-    linear-gradient(90deg, var(--signal), var(--accent));
+    linear-gradient(90deg, rgba(244, 242, 250, 0.12), rgba(244, 242, 250, 0.04)),
+    linear-gradient(90deg, var(--signal), var(--accent), var(--signal));
   background-repeat: no-repeat;
-  background-size: 100% 1px, 0% 1px;
+  background-size: 100% 100%, 0% 100%;
+  box-shadow: inset 0 0 0 1px rgba(244, 242, 250, 0.08);
 }
 
 .journey-grid::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: -5px;
-  width: 11px;
-  height: 11px;
+  left: 22px;
+  top: 25px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(244, 242, 250, 0.36);
   border-radius: 999px;
   background: var(--signal);
-  box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.12), 0 0 34px rgba(155, 107, 255, 0.48);
+  box-shadow: 0 0 0 10px rgba(233, 197, 72, 0.12), 0 0 44px rgba(155, 107, 255, 0.55);
   opacity: 0;
   pointer-events: none;
 }
 
 .journey-grid article {
   position: relative;
-  padding: 34px 28px 24px 0;
-  border-radius: 0 0 8px 8px;
-  transition: background 220ms var(--ease), transform 220ms var(--ease);
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(244, 242, 250, 0.12);
+  border-radius: 8px;
+  background: rgba(244, 242, 250, 0.055);
+  transition: border-color 220ms var(--ease), background 220ms var(--ease), transform 220ms var(--ease);
+}
+
+.journey-grid article:nth-child(even) {
+  margin-top: 34px;
 }
 
 .journey-grid article::before {
   content: "";
   position: absolute;
-  top: -6px;
-  left: 0;
-  width: 11px;
-  height: 11px;
-  border: 1px solid var(--accent-dim);
-  border-radius: 50%;
-  background: var(--paper);
-  transition: border-color 220ms var(--ease), background 220ms var(--ease), box-shadow 220ms var(--ease), transform 220ms var(--ease);
+  inset: auto 0 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--signal), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0.95;
 }
 
-.journey-grid article:last-child::before {
-  border-color: var(--signal);
-  background: var(--signal);
+.journey-grid article::after {
+  content: "0" counter(journey-step);
+  counter-increment: journey-step;
+  position: absolute;
+  right: 20px;
+  bottom: 14px;
+  color: rgba(244, 242, 250, 0.055);
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(68px, 7vw, 112px);
+  line-height: 0.78;
+  letter-spacing: -0.08em;
+  pointer-events: none;
 }
 
-.journey-grid article:hover {
-  background: rgba(155, 107, 255, 0.045);
-  transform: translateY(-4px);
+.journey-grid {
+  counter-reset: journey-step;
 }
 
-.journey-grid article:hover::before {
-  border-color: var(--signal);
-  background: var(--signal);
-  box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.1), 0 0 26px rgba(155, 107, 255, 0.35);
+.journey-grid .card-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 40px;
+  color: var(--signal);
 }
 
-.journey-grid span {
-  color: var(--accent-dim);
+.journey-grid .card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.journey-grid span:not(.card-icon) {
+  color: var(--accent-hot);
   text-transform: uppercase;
 }
 
 .journey-grid h3 {
-  margin: 18px 0 12px;
+  margin: 18px 0 14px;
+  color: var(--t-on-dark);
+}
+
+.journey-grid article:hover {
+  border-color: rgba(155, 107, 255, 0.48);
+  background: rgba(155, 107, 255, 0.13);
+  transform: translateY(-8px);
+}
+
+.journey-grid article:nth-child(even):hover {
+  transform: translateY(-8px);
 }
 
 .journey-grid p,
@@ -1512,6 +1587,10 @@ h4,
 .team-grid p,
 .faq-list p {
   color: var(--t-on-light-2);
+}
+
+.journey-grid p {
+  color: var(--t-on-dark-2);
 }
 
 .has-motion .journey-grid.is-visible::before {
@@ -2093,12 +2172,12 @@ h4,
 @keyframes journeyFill {
   0%,
   8% {
-    background-size: 100% 1px, 0% 1px;
+    background-size: 100% 100%, 0% 100%;
   }
 
   92%,
   100% {
-    background-size: 100% 1px, 100% 1px;
+    background-size: 100% 100%, 100% 100%;
   }
 }
 
@@ -2106,48 +2185,44 @@ h4,
   0%,
   8% {
     opacity: 1;
-    left: 0;
+    left: 22px;
   }
 
   92% {
     opacity: 1;
-    left: calc(100% - 11px);
+    left: calc(100% - 46px);
   }
 
   100% {
     opacity: 0;
-    left: calc(100% - 11px);
+    left: calc(100% - 46px);
   }
 }
 
 @keyframes journeyDot {
   0%,
   17% {
-    border-color: var(--signal);
-    background: var(--signal);
-    box-shadow: 0 0 0 8px rgba(233, 197, 72, 0.1), 0 0 28px rgba(155, 107, 255, 0.38);
-    transform: scale(1.1);
+    transform: scaleX(1);
   }
 
   32%,
   100% {
-    border-color: var(--accent-dim);
-    background: var(--paper);
-    box-shadow: none;
-    transform: scale(1);
+    transform: scaleX(0);
   }
 }
 
 @keyframes journeyStage {
   0%,
   17% {
-    background: rgba(155, 107, 255, 0.055);
-    transform: translateY(-4px);
+    border-color: rgba(233, 197, 72, 0.38);
+    background: rgba(155, 107, 255, 0.16);
+    transform: translateY(-10px);
   }
 
   32%,
   100% {
-    background: transparent;
+    border-color: rgba(244, 242, 250, 0.12);
+    background: rgba(244, 242, 250, 0.055);
     transform: translateY(0);
   }
 }
@@ -2256,13 +2331,19 @@ h4,
   }
 
   .journey-grid {
-    padding-top: 0;
-    border-top: 1px solid var(--line-l);
+    gap: 14px;
+    padding: 26px;
   }
 
   .journey-grid::before,
   .journey-grid::after {
     display: none;
+  }
+
+  .journey-grid article,
+  .journey-grid article:nth-child(even) {
+    min-height: 270px;
+    margin-top: 0;
   }
 
   .method-map {
@@ -2410,17 +2491,20 @@ h4,
   }
 
   .journey-grid {
-    border-top: 0;
-    border-left: 1px solid var(--line-l);
+    padding: 18px;
   }
 
   .journey-grid article {
-    padding: 0 0 34px 28px;
+    min-height: auto;
+    padding: 24px;
   }
 
   .journey-grid article::before {
-    top: 7px;
-    left: -6px;
+    inset: auto 0 0;
+  }
+
+  .journey-grid .card-icon {
+    margin-bottom: 28px;
   }
 
   .about-copy p:not(.eyebrow):first-of-type {
