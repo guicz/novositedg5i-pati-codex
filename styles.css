@@ -435,11 +435,12 @@ h4,
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.75fr);
   gap: clamp(34px, 5vw, 78px);
-  align-items: start;
+  align-items: end;
 }
 
 .section-head.split > p {
   max-width: 460px;
+  margin-bottom: 0.45em;
   padding-left: 30px;
   border-left: 1px solid currentColor;
 }
@@ -1490,15 +1491,11 @@ h4,
 .journey-grid::after {
   content: "";
   position: absolute;
-  left: 22px;
-  top: 25px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid rgba(244, 242, 250, 0.36);
-  border-radius: 999px;
-  background: var(--signal);
-  box-shadow: 0 0 0 10px rgba(233, 197, 72, 0.12), 0 0 44px rgba(155, 107, 255, 0.55);
-  opacity: 0;
+  inset: 0 auto 0 -34%;
+  width: 28%;
+  background: linear-gradient(90deg, transparent, rgba(233, 197, 72, 0.12), rgba(155, 107, 255, 0.18), transparent);
+  filter: blur(2px);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
@@ -1513,10 +1510,6 @@ h4,
   border-radius: 8px;
   background: rgba(244, 242, 250, 0.055);
   transition: border-color 220ms var(--ease), background 220ms var(--ease), transform 220ms var(--ease);
-}
-
-.journey-grid article:nth-child(even) {
-  margin-top: 34px;
 }
 
 .journey-grid article::before {
@@ -1598,7 +1591,7 @@ h4,
 }
 
 .has-motion .journey-grid.is-visible::after {
-  animation: journeyMarker var(--journey-cycle) ease-in-out infinite;
+  animation: journeySweep var(--journey-cycle) ease-in-out infinite;
 }
 
 .has-motion .journey-grid article.is-visible {
@@ -1627,41 +1620,133 @@ h4,
 .sector-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line-l);
-  border-left: 1px solid var(--line-l);
+  gap: 14px;
 }
 
 .sector-grid article {
-  min-height: 230px;
-  padding: 30px;
-  border-right: 1px solid var(--line-l);
-  border-bottom: 1px solid var(--line-l);
-  transition: background 180ms var(--ease);
+  position: relative;
+  min-height: 246px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid rgba(14, 12, 22, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(155, 107, 255, 0.08), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(246, 244, 238, 0.2));
+  transition: background 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease), transform 220ms var(--ease);
 }
 
-.sector-grid article:hover {
-  background: rgba(155, 107, 255, 0.05);
+.sector-grid article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 28%, rgba(8, 7, 13, 0.78)),
+    linear-gradient(135deg, rgba(8, 7, 13, 0.96), rgba(21, 18, 31, 0.92));
+  opacity: 0;
+  transition: opacity 220ms var(--ease);
+  pointer-events: none;
+}
+
+.sector-grid article::after {
+  content: "";
+  position: absolute;
+  right: -36px;
+  top: -36px;
+  width: 132px;
+  height: 132px;
+  border: 1px solid rgba(109, 69, 201, 0.18);
+  border-radius: 50%;
+  transition: border-color 220ms var(--ease), transform 220ms var(--ease);
+  pointer-events: none;
+}
+
+.sector-grid article:hover,
+.sector-grid article:focus-visible {
+  border-color: rgba(155, 107, 255, 0.42);
+  background:
+    linear-gradient(145deg, rgba(155, 107, 255, 0.13), transparent 56%),
+    var(--paper);
+  box-shadow: 0 24px 70px rgba(8, 7, 13, 0.16);
+  transform: translateY(-5px);
 }
 
 .sector-grid .card-icon {
-  display: none;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  color: var(--accent-dim);
+  opacity: 0.78;
+  transition: color 220ms var(--ease), opacity 220ms var(--ease), transform 220ms var(--ease);
+}
+
+.sector-grid .card-icon svg {
+  width: 34px;
+  height: 34px;
 }
 
 .sector-grid h3 {
   position: relative;
-  padding-left: 18px;
-  font-size: 1.22rem;
+  z-index: 1;
+  max-width: 240px;
+  padding-left: 0;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  transition: color 220ms var(--ease), transform 220ms var(--ease);
 }
 
 .sector-grid h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.45em;
-  width: 7px;
-  height: 7px;
-  background: var(--accent-dim);
-  transform: rotate(45deg);
+  display: none;
+}
+
+.sector-grid p {
+  position: relative;
+  z-index: 1;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: max-height 260ms var(--ease), margin-top 260ms var(--ease), opacity 220ms var(--ease), transform 220ms var(--ease), color 220ms var(--ease);
+}
+
+.sector-grid article:hover::before,
+.sector-grid article:focus-visible::before {
+  opacity: 1;
+}
+
+.sector-grid article:hover::after,
+.sector-grid article:focus-visible::after {
+  border-color: rgba(233, 197, 72, 0.34);
+  transform: scale(1.16);
+}
+
+.sector-grid article:hover .card-icon,
+.sector-grid article:focus-visible .card-icon {
+  color: var(--signal);
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.sector-grid article:hover h3,
+.sector-grid article:focus-visible h3 {
+  color: var(--t-on-dark);
+}
+
+.sector-grid article:hover p,
+.sector-grid article:focus-visible p {
+  max-height: 180px;
+  margin-top: 18px;
+  color: var(--t-on-dark-2);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .partner-strip {
@@ -2181,21 +2266,21 @@ h4,
   }
 }
 
-@keyframes journeyMarker {
+@keyframes journeySweep {
   0%,
   8% {
-    opacity: 1;
-    left: 22px;
+    transform: translateX(0);
+    opacity: 0;
   }
 
-  92% {
+  18%,
+  82% {
     opacity: 1;
-    left: calc(100% - 46px);
   }
 
   100% {
+    transform: translateX(480%);
     opacity: 0;
-    left: calc(100% - 46px);
   }
 }
 
@@ -2216,7 +2301,7 @@ h4,
   17% {
     border-color: rgba(233, 197, 72, 0.38);
     background: rgba(155, 107, 255, 0.16);
-    transform: translateY(-10px);
+    transform: translateY(0);
   }
 
   32%,
@@ -2272,6 +2357,7 @@ h4,
   }
 
   .section-head.split > p {
+    margin-bottom: 0;
     padding-left: 0;
     border-left: 0;
   }
@@ -2365,6 +2451,10 @@ h4,
   .sector-grid,
   .team-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .sector-grid article {
+    min-height: 230px;
   }
 }
 
@@ -2505,6 +2595,18 @@ h4,
 
   .journey-grid .card-icon {
     margin-bottom: 28px;
+  }
+
+  .sector-grid article {
+    min-height: auto;
+    padding: 26px;
+  }
+
+  .sector-grid p {
+    max-height: none;
+    margin-top: 14px;
+    opacity: 1;
+    transform: none;
   }
 
   .about-copy p:not(.eyebrow):first-of-type {
